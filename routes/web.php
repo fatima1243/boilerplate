@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +16,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Auth routes
-Auth::routes();
+// Custom login route for admin
+Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [LoginController::class, 'login']);
 
+// Logout route
+Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+// Authenticated routes
 Route::group(['middleware' => 'auth'], function () {
-    //Dashboard Routes
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::put('/profile/password', [ProfileController::class, 'updatePasswordProfile'])->name('password.profile.update');
-});
+    // Dashboard Routes
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    });
