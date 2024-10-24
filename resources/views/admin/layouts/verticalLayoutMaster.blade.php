@@ -5,11 +5,11 @@
 
   {{-- Include Sidebar --}}
   @if((isset($configData['showMenu']) && $configData['showMenu'] === true))
-  @include('panels.sidebar')
+  @include('admin.panels.sidebar')
   @endif
 
   {{-- Include Navbar --}}
-  @include('panels.navbar')
+  @include('admin.panels.navbar')
 
   <!-- BEGIN: Content-->
   <div class="app-content content {{ $configData['pageClass'] }}">
@@ -38,7 +38,7 @@
     <div class="content-wrapper {{ $configData['layoutWidth'] === 'boxed' ? 'container p-0' : '' }}">
       {{-- Include Breadcrumb --}}
       @if($configData['pageHeader'] === true && isset($configData['pageHeader']))
-      @include('panels.breadcrumb')
+      @include('admin.panels.breadcrumb')
       @endif
 
       <div class="content-body">
@@ -55,10 +55,10 @@
   <div class="drag-target"></div>
 
   {{-- include footer --}}
-  @include('panels/footer')
+  @include('admin/panels/footer')
 
   {{-- include default scripts --}}
-  @include('panels/scripts')
+  @include('admin/panels/scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {

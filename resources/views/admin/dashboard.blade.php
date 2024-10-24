@@ -1,5 +1,5 @@
 
-@extends('layouts/contentLayoutMaster')
+@extends('admin/layouts/contentLayoutMaster')
 
 @section('title', 'Dashboard Analytics')
 

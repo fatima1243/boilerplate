@@ -1,8 +1,6 @@
 const mix = require('laravel-mix')
-require('laravel-mix-eslint')
 const exec = require('child_process').exec
 require('dotenv').config()
-
 
 /*
  |--------------------------------------------------------------------------
@@ -31,6 +29,14 @@ function mixAssetsDir(query, cb) {
   })
 }
 
+
+// function mixAssetsDir(query, cb) {
+//   ;(glob.sync('resources/customer-resources' + query) || []).forEach(f => {
+//     f = f.replace(/[\\\/]+/g, '/')
+//     cb(f, f.replace('resources/customer-resources', 'public/customer-resources'))
+//   })
+// }
+
 const sassOptions = {
   precision: 5,
   includePaths: ['node_modules', 'resources/assets/']
@@ -53,6 +59,8 @@ mixAssetsDir('sass/base/core/**/!(_)*.scss', (src, dest) =>
 
 // script js
 mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest))
+mixAssetsDir('js/meeting/**/*.js', (src, dest) => mix.scripts(src, dest))
+
 
 /*
  |--------------------------------------------------------------------------
@@ -63,25 +71,37 @@ mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest))
 mixAssetsDir('vendors/js/**/*.js', (src, dest) => mix.scripts(src, dest))
 mixAssetsDir('vendors/css/**/*.css', (src, dest) => mix.copy(src, dest))
 mixAssetsDir('vendors/**/**/images', (src, dest) => mix.copy(src, dest))
+
 mixAssetsDir('vendors/css/editors/quill/fonts/', (src, dest) => mix.copy(src, dest))
+
 mixAssetsDir('fonts', (src, dest) => mix.copy(src, dest))
 mixAssetsDir('fonts/**/**/*.css', (src, dest) => mix.copy(src, dest))
 mix.copyDirectory('resources/images', 'public/images')
 mix.copyDirectory('resources/data', 'public/data')
 
+
+mixAssetsDir('customer-resources/**', (src, dest) => mix.copy(src, dest))
+// mix.js('resources/customer-resources/js/scripts/app.js', 'public/js').vue()
+
+
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
-//   .eslint({
-//     fix: true,
-//     extensions: ['js'],
-//     //...
-//    })
+  // .js('resources/js/config.js', 'public/js')
+  // .js('resources/js/index.js', 'public/js')
+  // .js('resources/js/config.js', 'public/js')
+  // .js('resources/js/tool.js', 'public/js')
+  .js('resources/js/app.js', 'public/js').vue()
+  // .js('resources/customer-resources/js/app.js', 'public/customer-resources/js').vue()
+
+
+  .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/core.scss', 'public/css', {sassOptions})
   .sass('resources/sass/overrides.scss', 'public/css', {sassOptions})
   .sass('resources/sass/base/custom-rtl.scss', 'public/css', {sassOptions})
   .sass('resources/assets/scss/style-rtl.scss', 'public/css', {sassOptions})
   .sass('resources/assets/scss/style.scss', 'public/css', {sassOptions})
+//   .sass('resources/customer-resources/sass/app.scss', 'public/css')
 
 mix.then(() => {
   if (process.env.MIX_CONTENT_DIRECTION === 'rtl') {
@@ -93,6 +113,10 @@ mix.then(() => {
     })
   }
 })
+
+if(mix.inProduction()) {
+  mix.version();
+}
 
 // if (mix.inProduction()) {
 //   mix.version()
