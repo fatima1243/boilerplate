@@ -90,7 +90,7 @@
 
         <p class="text-center mt-2">
           @if (Route::has('login'))
-          <a href="{{ route('login') }}">
+          <a href="{{ route('admin.login') }}">
             <i data-feather="chevron-left"></i> Back to login
           </a>
           @endif

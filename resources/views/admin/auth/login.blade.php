@@ -43,7 +43,7 @@
         <h4 class="card-title mb-1">Welcome to Vuexy! 👋</h4>
         <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
-        <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
+        <form class="auth-login-form mt-2" method="POST" action="{{ route('admin.login') }}">
           @csrf
           <div class="form-group">
             <label for="login-email" class="form-label">Email</label>

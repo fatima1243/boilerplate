@@ -63,10 +63,7 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-            <a class="dropdown-item" href="{{route('profile')}}">
-              <i class="mr-50" data-feather="user"></i> Profile
-            </a>
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="mr-50" data-feather="power"></i> Logout
             </a>
           </div>
@@ -75,7 +72,7 @@
     </div>
   </nav>
 
-  <form id="logout-form" method="POST" style="display: none;" action="{{ route('logout') }}">@csrf</form>
+  <form id="logout-form" method="POST" style="display: none;" action="{{ route('admin.logout') }}">@csrf</form>
 
   {{-- Search Start Here --}}
   <ul class="main-search-list-defaultlist d-none">
