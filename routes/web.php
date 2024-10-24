@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,6 @@ Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.lo
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard Routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    });
+});
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
