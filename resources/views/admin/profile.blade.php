@@ -1,4 +1,4 @@
-@extends('layouts/contentLayoutMaster')
+@extends('admin/layouts/contentLayoutMaster')
 
 @section('title', 'Account Settings')
 
@@ -11,7 +11,7 @@
 
 @section('content')
 
-@include('panels.response')
+@include('admin.panels.response')
 
 <!-- account setting page -->
 <section id="page-account-settings">

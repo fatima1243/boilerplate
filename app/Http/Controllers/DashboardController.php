@@ -10,6 +10,6 @@ class DashboardController extends Controller
         $breadcrumbs = [
             ['link'=>"/",'name'=>"Dashboard"], ['name'=>"Dashboard"]
         ];
-        return view('dashboard', ['breadcrumbs' => $breadcrumbs]);
+        return view('admin.dashboard', ['breadcrumbs' => $breadcrumbs]);
     }
 }

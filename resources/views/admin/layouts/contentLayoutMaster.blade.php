@@ -21,13 +21,13 @@ $configData = Helper::applClasses();
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
   {{-- Include core + vendor Styles --}}
-  @include('panels/styles')
+  @include('admin/panels/styles')
 
 </head>
 
 
 
 @isset($configData["mainLayoutType"])
-@extends((( $configData["mainLayoutType"] === 'horizontal') ? 'layouts.horizontalLayoutMaster' :
-'layouts.verticalLayoutMaster' ))
+@extends((( $configData["mainLayoutType"] === 'horizontal') ? 'admin.layouts.horizontalLayoutMaster' :
+'admin.layouts.verticalLayoutMaster' ))
 @endisset
