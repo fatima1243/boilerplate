@@ -1,3 +1,12 @@
+<script>
+export default {
+  methods: {
+    isActive(path) {
+      return window.location.pathname === path;
+    }
+  }
+};
+</script>
 <template>
     <header id="header" >
       <div class="container-xl container-fluid d-flex justify-content-between">
@@ -18,22 +27,22 @@
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 align-items-center">
                     <li class="nav-item">
-                        <a href="/" class="nav-link" exact aria-current="page">Home</a>
+                      <a :class="['nav-link', isActive('/') ? 'active' : '']" href="/" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/about" class="nav-link">About</a>
+                      <a :class="['nav-link', isActive('/about') ? 'active' : '']" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/services" class="nav-link">Services</a>
+                      <a :class="['nav-link', isActive('/services') ? 'active' : '']" href="/services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/blog" class="nav-link">Blog</a>
+                      <a :class="['nav-link', isActive('/blog') ? 'active' : '']" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link">Contact</a>
+                      <a :class="['nav-link', isActive('/contact') ? 'active' : '']" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/signin" class="nav-link">Sign in</a>
+                      <a :class="['nav-link', isActive('/recruiter/login') ? 'active' : '']" href="/recruiter/login">Sign in</a>
                     </li>
                     <li class="nav-item">
                         <a href="/driver" class="nav-link driver-btn">Driver</a>
@@ -78,5 +87,16 @@
   justify-content: center;
   border-radius: 8px;
   box-shadow: 0px 20px 10px rgb(0 0 0 / 5%);
+}
+.active-link {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  /* Change this to the desired thickness */
+  background-color: #0D6EFD;
+  border-radius: 0 0 5px 5px;
 }
 </style>

@@ -103,7 +103,7 @@ export default {
 </script>
 
 <template>
-<footer class="footer">
+<footer class="home-footer">
    <section class="main-footer px-sm-0 col-xl">
       <div class="main-footer-logo col-sm container-sm ms-xl-0 px-0">
          <div class="row main-footer-content">
