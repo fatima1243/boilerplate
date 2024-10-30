@@ -53,6 +53,8 @@
         "vue-simple-alert": "^1.1.1",
         "vue-sweetalert2": "^5.0.5",
         "vue-tel-input": "^5.11.0",
+        "vue-toast-notification": "^1.0.1",
+        "vue-toastification": "^1.7.14",
         "vue2-timepicker": "^1.1.6"
     }
 }

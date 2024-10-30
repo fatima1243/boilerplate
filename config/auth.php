@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'driver' => [
+            'driver' => 'session',
+            'provider' => 'drivers',
+        ],
+
+        'recruiter' => [
+            'driver' => 'session',
+            'provider' => 'recruiters',
+        ],
     ],
 
     /*
@@ -71,11 +81,17 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Driver::class, 
+        ],
+
+        'recruiters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Recruiter::class, 
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

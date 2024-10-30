@@ -1,0 +1,271 @@
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* space between buttons */
+  margin-top: 20px;
+}
+
+.social-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.social-button:hover {
+  border-color: #aaa;
+  cursor: pointer;
+}
+
+/* Social button icons */
+.social-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.separator::before {
+  margin-right: 10px;
+}
+
+.separator::after {
+  margin-left: 10px;
+}
+
+.separator-text {
+  color: #B1BBC6;
+  font-size: 14px;
+}
+
+
+.panel {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: white;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  padding: 40px;
+}
+
+.left-panel {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.left-panel img {
+  width: 60%;
+  margin-bottom: 30px;
+}
+
+.left-panel h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.left-panel p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.left-panel a {
+  color: white;
+  text-decoration: underline;
+  display: block;
+  margin-top: 10px;
+}
+
+.right-panel {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  padding-left: 40px;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-container p {
+  color: #777;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.field-row {
+  margin-bottom: 15px;
+}
+
+.field-row.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.field-col {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.field-col:last-child {
+  margin-right: 0;
+}
+
+.form-container input,
+.form-container .vue-tel-input input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.social-button {
+  padding: 10px;
+  width: 30%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.social-button.fb {
+  background-color: #3b5998;
+  color: white;
+}
+.uploaded-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin-top: 10px;
+}
+
+.social-button.google {
+  background-color: #db4437;
+  color: white;
+}
+
+.social-button.instagram {
+  background-color: #E1306C;
+  color: white;
+}
+
+.p-error {
+  color: red !important;
+  margin-top: 5px;
+}
+
+.or {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.btn-create {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* Hide the left panel and center the right panel on medium screens and smaller */
+@media (max-width: 992px) { /* For tablets and smaller */
+  .panel {
+    display: block; /* Stack elements vertically */
+  }
+
+  .left-panel {
+    display: none; /* Hide the left panel */
+  }
+
+  .right-panel {
+    margin: 0 auto; /* Center the right panel */
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Optional: control maximum width */
+    padding: 20px; /* Adjust padding as needed */
+    justify-content: center;
+  }
+
+  .form-container {
+    padding-left: 0; /* Remove padding for the form */
+  }
+}
+
+/* Add margin to the right panel on extra-large screens */
+@media (min-width: 1400px) { /* For extra-large screens (e.g., desktops) */
+  .form-container {
+    width: 100%;
+    max-width: 600px;
+    padding-left: 80px;
+  }
+}
