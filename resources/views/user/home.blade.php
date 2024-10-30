@@ -3,11 +3,11 @@
 @section('title', 'Mooveto')
 @section('description',
     'Test')
-@section('home-section')
+@section('main-section')
     <div class="">
         @include('user.layouts.response')
     </div>
-       <home-component></home-component>
+    <main-component/>
 @endsection
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

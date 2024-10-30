@@ -3,10 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+import Vue from 'vue';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
 require('./bootstrap');
 
+
 window.Vue = require('vue').default;
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,9 +23,34 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('home-component', require('./components/HomeComponent.vue').default);
-Vue.component("home-component",require("./components/HomeComponent.vue").default);
+Vue.component("home-component",require("./layouts/SimpleLayout.vue").default);
+
+Vue.component(
+    "footer-component",
+    require("./components/Footer.vue").default
+  );
+
+Vue.component(
+    "header-component",
+    require("./components/Header.vue").default
+  );
+
+  Vue.component(
+    "home-component",
+    require("./pages/webpages/Index.vue").default
+  );
+
+  Vue.component(
+    "main-component",
+    require("./components/SimpleLayout.vue").default
+  );
+
+  Vue.component(
+    "not_found-component",
+    require("./pages/webpages/NotFound.vue").default
+  );
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
