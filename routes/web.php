@@ -25,6 +25,9 @@ Route::post('/admin/login', [LoginController::class, 'login']);
 // Logout route
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
+//Home Page
+// Route::post('/', [LoginController::class, 'logout'])->name('admin.logout');
+
 // Authenticated routes
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard Routes
@@ -33,9 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
 Route::get('recruiter/login', [LoginRegisterController::class, 'showLoginForm'])->name('recruiter/login');
 Route::post('recruiter/post-login', [LoginRegisterController::class, 'login'])->name('recruiterLogin.post');
 Route::get('recruiter/register', [LoginRegisterController::class, 'register'])->name('recruiter/register');
 Route::post('recruiter/register-post', [LoginRegisterController::class, 'registration']);
 Route::get('/recruiter/verify/{token}', [LoginRegisterController::class, 'verifyRecruiterEmail'])->name('peer/verify');
+
+Route::fallback(function () {
+    return view('webPages.notFound'); // Make sure the view exists in resources/views/errors/404.blade.php
+});
