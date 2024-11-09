@@ -1,8 +1,8 @@
 // src/menuConfig.js
 
 export const userMenu = [
-  { name: "Posted Jobs", routeName: "UserDashboard" },
-  { name: "Create New Job", routeName: "CreateJob" },
+  { name: "Posted Jobs", routeName: "/jobPosts" },
+  { name: "Create New Job", routeName: "/jobPosts/create" },
   { name: "Messaging", routeName: "Inbox" },
   // { name: "Setting", routeName: "UpdateProfile" },
 ];

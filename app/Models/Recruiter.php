@@ -36,5 +36,9 @@ class Recruiter extends Authenticatable
     {
         return $this->hasOne(VerifyRecruiter::class);
     }
+    public function jobPosts()
+    {
+        return $this->hasMany(JobPost::class);
+    }
 }
 

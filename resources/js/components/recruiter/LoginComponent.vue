@@ -96,6 +96,7 @@ export default {
                 });
                 this.loading = false;
                 this.$toast.success(response.data.message); // Display success message
+                window.location.href = '/jobPosts/create';
             } catch (error) {
                 this.loading = false;
                 this.isDisabled = false;
