@@ -97,6 +97,7 @@ mix
 
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/all.scss', 'public/css')
+  .sass('resources/sass/responsive.scss', 'public/css')
   .sass('resources/sass/core.scss', 'public/css', {sassOptions})
   .sass('resources/sass/overrides.scss', 'public/css', {sassOptions})
   .sass('resources/sass/base/custom-rtl.scss', 'public/css', {sassOptions})

@@ -12,6 +12,7 @@
 
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     <link href="{{ asset(mix('css/all.css')) }}" rel="stylesheet">
+    <link href="{{ asset(mix('css/responsive.css')) }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-STu1Ami0tstp1uFO9avWhTBMAnrmc/8vZaZjZh2fxXyBu8g8TBcfrl94G8Pkl8Se" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

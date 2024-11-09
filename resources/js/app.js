@@ -34,8 +34,11 @@ Vue.use(Toast, {
 Vue.component("footer-component",require("./components/Footer.vue").default);
 Vue.component("header-component",require("./components/Header.vue").default);
 Vue.component("home-component",require("./pages/webpages/Index.vue").default);
-Vue.component("main-component",require("./components/SimpleLayout.vue").default);
+Vue.component("main-component",require("./layouts/SimpleLayout.vue").default);
+Vue.component("dashboard-component",require("./layouts/MasterLayout.vue").default);
 Vue.component("not_found-component",require("./pages/webpages/NotFound.vue").default);
+Vue.component("job-component",require("./components/recruiter/CreateServiceComponent.vue").default);
+Vue.component("job-listing-component",require("./components/recruiter/JobList.vue").default);
 Vue.component("login-component",require("./components/recruiter/LoginComponent.vue").default);
 Vue.component("register-component",require("./components/recruiter/RegisterComponent.vue").default);
 Vue.component("login-side-bar-component",require("./components/sideBar/loginSideBarComponent.vue").default);
