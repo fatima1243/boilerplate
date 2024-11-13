@@ -43,6 +43,8 @@ Vue.component("login-component",require("./components/recruiter/LoginComponent.v
 Vue.component("register-component",require("./components/recruiter/RegisterComponent.vue").default);
 Vue.component("login-side-bar-component",require("./components/sideBar/loginSideBarComponent.vue").default);
 Vue.component("register-side-bar-component",require("./components/sideBar/registerSideBarComponent.vue").default);
+Vue.component("driver-register-component",require("./components/driver/RegisterComponent.vue").default);
+Vue.component("driver-register-side-bar-component",require("./components/sideBar/registerSideBarComponent.vue").default);
 
 
 const app = new Vue({

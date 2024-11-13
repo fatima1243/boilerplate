@@ -88,13 +88,7 @@ class JobPostService
 
     public function getAllTask($request)
     {
-        $data = $this->getAuthenticatedUser()->jobPosts()->with('image')
-            ->orderByDesc('id')
-            ->when($request->search, function ($q) use ($request) {
-                $q->where('title', 'LIKE', '%' . $request->query('search') . '%');
-            })
-            ->when($request->orderBy, fn ($q) => $q->orderBy('id', $request->query('orderBy')))
-            ->simplePaginate($request->query('pagination'));
+        $data = JobPost::all();
 
         return $data;
     }

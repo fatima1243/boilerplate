@@ -125,7 +125,6 @@
   }
   
   onMounted(() => {
-    console.log(jobs);
     user.value = {
       role: 0,
       full_profile_path: null,

@@ -6,6 +6,6 @@
 
 
 @section('main-section')
-<register-component>
-</register-component>
+<driver-register-component>
+</driver-register-component>
 @endsection

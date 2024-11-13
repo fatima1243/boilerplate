@@ -31,4 +31,9 @@ class Driver extends Model
         'vehicle_plates',
         'driving_experience',
     ];
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 }

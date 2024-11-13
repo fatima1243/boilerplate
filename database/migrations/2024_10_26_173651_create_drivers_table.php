@@ -23,16 +23,6 @@ class CreateDriversTable extends Migration
             $table->string('contact_no');
             $table->foreignId('state_id');
             $table->foreignId('city_id');
-            $table->string('identity_card_front');
-            $table->string('identity_card_back');
-            $table->string('driving_lic_front');
-            $table->string('driving_lic_back');
-            $table->string('vehicle_insurance_policy'); 
-            $table->string('vehicle_type'); 
-            $table->string('vehicle_model'); 
-            $table->string('year_of_production'); 
-            $table->string('vehicle_plates'); 
-            $table->string('driving_experience');
             $table->timestamps();
             $table->softDeletes(); 
         });
