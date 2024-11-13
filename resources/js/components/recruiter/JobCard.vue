@@ -16,22 +16,22 @@
                                     <img :src="`${$public}/share.png`" class="px-5" @click="openModal"
                                         style="cursor:pointer" />
                                 </div>
-                                <div class="bid-count btn">
+                                <!-- <div class="bid-count btn">
                                     <RouterLink :to="{ name: 'UserDetailJob', params: { id: job.id } }" target="_blank">
                                         <p class="bid-count">No of Bids ({{ job.biddings_count }})</p>
                                     </RouterLink>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="job-title">
+                    <!-- <div class="job-title">
                         <RouterLink :to="{ name: 'UserDetailJob', params: { id: job.id } }" target="_blank">
                             <span>{{ job.title }}</span>
                         </RouterLink>
-                    </div>
+                    </div> -->
 
-                    <div class="d-flex justify-content-between flex-wrap">
+                    <!-- <div class="d-flex justify-content-between flex-wrap">
                         <div class="d-flex align-items-baseline flex-wrap">
                             <div class="distance">
                                 <p class="title">Distance:</p>
@@ -49,23 +49,23 @@
                         <div class="lowest-bid-tag">
                             <p>Lowest Bid: £{{ job?.min_bid?.price }}</p>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div>
+                    <!-- <div>
                         <p class="discription">{{ job.additional_details }}</p>
-                    </div>
-                    <div class="bid-actions">
+                    </div> -->
+                    <!-- <div class="bid-actions">
                         <button @click="editJOb(job.id)" class="edit-btn"><img :src="`${$public}/basil_edit-solid.svg`" />
                         </button>
                         <button @click="deleteJob(job.id)" class="delete-btn"><img
                                 :src="`${$public}/ic_baseline-delete.svg`"
                                 v-if="job.status === $constants.TASK_STATUS['pending']" /></button>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
         </div>
-        <div v-if="showModal" class="modal">
+        <!-- <div v-if="showModal" class="modal">
             <div class="modal-content">
                 <span class="close" @click="closeModal">&times;</span>
                 <h2>Copy Link</h2>
@@ -77,7 +77,7 @@
                 </div>
                 <p v-if="copyMessage" class="copy-message">{{ copyMessage }}</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -86,6 +86,12 @@ import moment from 'moment';
 
 export default {
     name: "JobCard",
+    props: {
+        job: {
+            type: Object,
+            required: true,
+        },
+    },
     data() {
         return {
             showModal: false, // controls the modal visibility

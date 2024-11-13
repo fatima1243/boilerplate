@@ -5,7 +5,7 @@
 @section('title', 'Mooveto - Login page')
 
 
-@section('home-section')
+@section('main-section')
 <login-component>
 </login-component>
 @endsection

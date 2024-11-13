@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\Driver\RegisterController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\StateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('/driver/register', [RegisterController::class, 'register'])->name('driver.register');
+
+Route::controller(CityController::class)->group(function () {
+    Route::post('get-cities-based-on-state', 'getCititesBasedOnState')->name('city.getCitiesBasedOnState');
+});
+
+Route::controller(StateController::class)->group(function () {
+    Route::get('get-states', 'getStates');
 });

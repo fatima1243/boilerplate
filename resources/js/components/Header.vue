@@ -45,7 +45,7 @@ export default {
                       <a :class="['nav-link', isActive('/recruiter/login') ? 'active' : '']" href="/recruiter/login">Sign in</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/driver" class="nav-link driver-btn">Driver</a>
+                        <a href="/driver/registeration" class="nav-link driver-btn">Driver</a>
                     </li>
                 </ul>
 

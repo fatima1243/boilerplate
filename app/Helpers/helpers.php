@@ -3,6 +3,98 @@
 namespace App\Helpers;
 
 use Config;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+
+if (!function_exists('storeFiles')) {
+    function storeFiles($folder, $file)
+    {
+        return Storage::disk('public')->putFile($folder, $file);
+    }
+}
+
+if (!function_exists('storeBase64Image')) {
+    function storeBase64Image($base64Image, $path)
+    {
+        // Check if the string is in base64 format
+        if (preg_match('/^data:image\/(\w+);base64,/', $base64Image, $type)) {
+            // Remove the part that we don't need (the `data:image/{mime};base64,` part)
+            $base64Image = substr($base64Image, strpos($base64Image, ',') + 1);
+
+            // Decode the base64 string
+            $decodedImage = base64_decode($base64Image);
+
+            // Generate a unique name for the image
+            $imageName = Str::random(10) . '.' . $type[1]; // Use the extension from the mime type
+
+            // Define the storage path, e.g., 'public/images' or 'uploads/vehicle_insurance'
+            $image_path = $path . $imageName;
+
+            // Store the image using Laravel's Storage facade
+            Storage::put($image_path, $decodedImage);
+
+            return $image_path; // Returns the file path for reference
+        }
+
+        return false; // Return false if the input is not a valid base64 image
+    }
+}
+
+if (!function_exists('returnToApi')) {
+    function returnToApi($type, $message = null, $return_object = null)
+    {
+        if ($type == 'success') {
+            $return_response = sendSuccess($message, $return_object);
+        } elseif ($type == 'error') {
+            $return_response = sendError($message, $return_object);
+        } elseif ($type == 'custom') {
+            $return_response = customValidationError($return_object);
+        }
+
+        return $return_response;
+    }
+}
+
+if (!function_exists('sendError')) {
+    function sendError($message, $data = null, $statusCode = 400)
+    {
+        return response()->json(
+            [
+                'status' => false,
+                'statusCode' => $statusCode,
+                'message' => $message,
+                'data' => $data,
+            ],
+            400,
+        );
+    }
+}
+
+if (!function_exists('customValidationError')) {
+    function customValidationError($errors = null)
+    {
+        return response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $errors,
+        ]);
+    }
+}
+
+if (!function_exists('sendSuccess')) {
+    function sendSuccess($message, $data = null)
+    {
+        return response()->json(
+            [
+                'status' => true,
+                'statusCode' => 200,
+                'message' => $message,
+                'data' => $data,
+            ],
+            200,
+        );
+    }
+}
 
 class Helper
 {

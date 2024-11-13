@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Driver\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobPostController;
@@ -42,9 +43,13 @@ Route::resource('jobPosts', JobPostController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('recruiter/login', [LoginRegisterController::class, 'showLoginForm'])->name('recruiter/login');
+Route::get('driver/login', [LoginRegisterController::class, 'showLoginForm'])->name('driver/login');
 Route::post('recruiter/post-login', [LoginRegisterController::class, 'login'])->name('recruiterLogin.post');
 Route::get('recruiter/register', [LoginRegisterController::class, 'register'])->name('recruiter/register');
 Route::post('recruiter/register-post', [LoginRegisterController::class, 'registration']);
+Route::get('/driver/registeration', [RegisterController::class, 'showRegistrationForm'])->name('driver.registerForm');
+Route::post('/driver/register', [RegisterController::class, 'register'])->name('driver.register');
+
 Route::get('/recruiter/verify/{token}', [LoginRegisterController::class, 'verifyRecruiterEmail'])->name('peer/verify');
 
 Route::fallback(function () {

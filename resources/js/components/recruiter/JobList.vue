@@ -8,7 +8,7 @@
                 <div>
                     <Search />
                 </div>
-                <JobCard v-for="job in jobs" :key="job?.id" :job="job" />
+                <JobCard v-for="job in jobs" :key="job.id" :job="job" />
             </div>
             <div v-else>
                 <p class="no-record-found">No jobs found</p>
@@ -52,9 +52,14 @@ export default {
         Search,
         Modal
     },
+    props: {
+        jobs: {
+            type: Array,
+            required: true
+        }
+    },
     data() {
         return {
-            jobs: [],
             task_id: null,
             isModalDelete: false,
             search: '',
@@ -65,12 +70,11 @@ export default {
     },
 
     created() {
-        this.emitter.on("deleteJob", (jobId) => {
-            this.isModalDelete = true;
-            this.task_id = jobId
-        })
+        // This will log when the component is created
+      
     },
     mounted() {
+          console.log("Jobs at created:", this.jobs);
         this.fetchJobs();
         this.emitter.on('search', (search) => {
             this.search = search;

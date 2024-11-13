@@ -7,7 +7,11 @@
     <div class="">
         @include('user.layouts.response')
     </div>
-    <dashboard-component :jobs="{{ json_encode($jobs) }}" :role="{{ json_encode($roleId) }}" :dynamic-component="'job-listing-component'"></dashboard-component>
+    {{-- {{dd(count($jobs))}} --}}
+
+    {{-- {{dd(count(json_encode($roleId)))}} --}}
+    <dashboard-component  :role="{{ json_encode($roleId) }}"></dashboard-component>
+    <job-listing-component :jobs="{{ $jobs }}" :dynamic-component="'job-listing-component'"></job-listing-component>
 
 @endsection
 @push('scripts')
