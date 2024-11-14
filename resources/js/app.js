@@ -40,6 +40,7 @@ Vue.component("not_found-component",require("./pages/webpages/NotFound.vue").def
 Vue.component("job-component",require("./components/recruiter/CreateServiceComponent.vue").default);
 Vue.component("job-listing-component",require("./components/recruiter/JobList.vue").default);
 Vue.component("login-component",require("./components/recruiter/LoginComponent.vue").default);
+Vue.component("driver-login-component",require("./components/driver/LoginComponent.vue").default);
 Vue.component("register-component",require("./components/recruiter/RegisterComponent.vue").default);
 Vue.component("login-side-bar-component",require("./components/sideBar/loginSideBarComponent.vue").default);
 Vue.component("register-side-bar-component",require("./components/sideBar/registerSideBarComponent.vue").default);
