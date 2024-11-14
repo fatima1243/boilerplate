@@ -10,6 +10,7 @@ use Auth;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Notification;
 use Str;
 use Validator;
@@ -80,6 +81,11 @@ class LoginRegisterController extends Controller
         return view('user.recruiter.login');
     }
 
+    public function driverLoginForm()
+    {
+        return view('user.driver.login');
+    }
+
     public function login(Request $request)
     {
         // Validate the request data
@@ -112,6 +118,43 @@ class LoginRegisterController extends Controller
                 'message' => 'Login successful!',
                 'data' => [
                     'user' => $recruiter,
+                    'token' => $token,
+                ],
+            ], 200);
+        }
+    
+        // If authentication fails, return an error message
+        return response()->json(['message' => 'Invalid credentials, please try again.'], 401);
+    }
+
+    public function driverLogin(Request $request)
+    {
+        // Validate the incoming request
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+    
+        
+        // Attempt to log in using the recruiter guard
+        if (FacadesAuth::guard('driver')->attempt($credentials)) {
+            // Authentication was successful
+            $driver = Auth::guard('driver')->user();
+    
+            // Check if the recruiter's email is verified
+            if (is_null($driver->email_verified_at)) {
+                // If email is not verified, log out the user and return a message
+                Auth::guard('driver')->logout();
+                return response()->json(['message' => 'Your email address is not verified. Please check your email to verify your account.'], 403);
+            }
+    
+            // Generate an authentication token
+            $token = $driver->createToken('DriverAuthToken')->plainTextToken;
+    
+            return response()->json([
+                'message' => 'Login successful!',
+                'data' => [
+                    'user' => $driver,
                     'token' => $token,
                 ],
             ], 200);

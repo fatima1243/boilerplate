@@ -43,8 +43,9 @@ Route::resource('jobPosts', JobPostController::class);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('recruiter/login', [LoginRegisterController::class, 'showLoginForm'])->name('recruiter/login');
-Route::get('driver/login', [LoginRegisterController::class, 'showLoginForm'])->name('driver/login');
+Route::get('driver/login', [LoginRegisterController::class, 'driverLoginForm'])->name('driver.login');
 Route::post('recruiter/post-login', [LoginRegisterController::class, 'login'])->name('recruiterLogin.post');
+Route::post('driver/post-login', [LoginRegisterController::class, 'Driverlogin'])->name('DriverLogin.post');
 Route::get('recruiter/register', [LoginRegisterController::class, 'register'])->name('recruiter/register');
 Route::post('recruiter/register-post', [LoginRegisterController::class, 'registration']);
 Route::get('/driver/registeration', [RegisterController::class, 'showRegistrationForm'])->name('driver.registerForm');

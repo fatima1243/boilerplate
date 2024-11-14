@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/driver/register', [RegisterController::class, 'register'])->name('driver.register');
 
 Route::controller(CityController::class)->group(function () {
     Route::post('get-cities-based-on-state', 'getCititesBasedOnState')->name('city.getCitiesBasedOnState');
