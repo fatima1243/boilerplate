@@ -210,7 +210,7 @@
     
             <!-- Sign up text -->
             <div class="signup-text">
-              Already an account? <a href="{ name: 'DriverLogin' }">Login</a>
+              Already an account? <a href="/driver/login">Login</a>
             </div>
         </div>
       </div>

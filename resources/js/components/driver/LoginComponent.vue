@@ -62,6 +62,8 @@
 <script>
 import axios from "axios";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
+import AuthService from "../services/AuthService";
+import Auth from "../../auth";
 
 export default {
     components: {
@@ -94,10 +96,13 @@ export default {
                         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
                     },
                 });
+                let user = response.data.data;
                 this.loading = false;
+                Auth.login(user.token, user);
                 this.$toast.success(response.data.message); // Display success message
                 window.location.href = '/jobPosts/create';
             } catch (error) {
+                console.log(error);
                 this.loading = false;
                 this.isDisabled = false;
 
