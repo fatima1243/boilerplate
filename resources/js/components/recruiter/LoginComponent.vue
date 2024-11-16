@@ -62,6 +62,8 @@
 <script>
 import axios from "axios";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
+import AuthService from "../services/AuthService";
+import Auth from "../../auth";
 
 export default {
     components: {
@@ -95,6 +97,7 @@ export default {
                     },
                 });
                 this.loading = false;
+                Auth.login(response.data.token, user);
                 this.$toast.success(response.data.message); // Display success message
                 window.location.href = '/jobPosts/create';
             } catch (error) {
