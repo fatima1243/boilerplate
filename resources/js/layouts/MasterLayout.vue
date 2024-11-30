@@ -45,7 +45,7 @@
     </div>
     <div class="my-content">
       <!-- <RouterView /> -->
-      <component :is="dynamicComponent"></component>
+      <!-- <component :is="dynamicComponent"></component> -->
     </div>
     </div>
   </template>
@@ -59,31 +59,34 @@
   
   <script setup>
   import { ref, onMounted,mounted, onUnmounted, getCurrentInstance, computed } from "vue";
-  // import AuthService from "../../services/AuthService.js";
+  import AuthService from "../components/services/AuthService.js";
+  import auth from "../auth.js"
   import { userMenu, driverMenu } from './menu.js';
   
-  const user = ref(null); // Replace this with actual user data as needed
+  // const user = ref(null); // Replace this with actual user data as needed
+  const authUser = auth.user.user.role; // Call the function using ()
   const profileDropdown = ref(false);
   const messageCount = ref(0);
   const { proxy } = getCurrentInstance();
   
   const props = defineProps({
-    role: {
-      type: String,
-      required: true
-    },
+    // role: {
+    //   type: String,
+    //   required: true
+    // },
 
-    dynamicComponent: {
-      type: String,
-      required: true
-    },
+    // dynamicComponent: {
+    //   type: String,
+    //   required: true
+    // },
   })
   
   const menuItems = computed(() => {
-    return props.role === "1" ? driverMenu : userMenu;
+    return authUser == "1" ? driverMenu : userMenu;
   });
   
   onUnmounted(() => {
+  
     alert(`Role value: ${props.role}`);
     window.removeEventListener("click", clickEventListener);
   });
@@ -125,10 +128,10 @@
   }
   
   onMounted(() => {
-    user.value = {
-      role: 0,
-      full_profile_path: null,
-    };
+    // user.value = {
+    //   role: 0,
+    //   full_profile_path: null,
+    // };
     window.addEventListener("click", clickEventListener);
   });
   

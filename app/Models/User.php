@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $appends = ['role'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRoleAttribute()
+    {
+        return $this->is_driver ? 1 : 0; // Assuming `is_driver` is a boolean field in your database
+    }
 }

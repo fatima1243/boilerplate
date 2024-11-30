@@ -44,6 +44,7 @@ import JobCard from "../../components/recruiter/JobCard.vue";
 import Search from "../../components/search/Search.vue"
 import TaskService from "../services/users/taskApiService";
 import Modal from "../../components/modal/Modal.vue";
+  import auth from "../../auth.js"
 
 export default {
     name: "JobList",
@@ -52,20 +53,16 @@ export default {
         Search,
         Modal
     },
-    props: {
-        jobs: {
-            type: Array,
-            required: true
-        }
-    },
     data() {
         return {
+            jobs: [],
             task_id: null,
             isModalDelete: false,
             search: '',
             orderBy: '',
             loader: false,
-            page: 1
+            page: 1,
+            userId: auth.user.user.id
         };
     },
 
@@ -74,22 +71,28 @@ export default {
       
     },
     mounted() {
-          console.log("Jobs at created:", this.jobs);
-        this.fetchJobs();
-        this.emitter.on('search', (search) => {
-            this.search = search;
-            this.fetchJobs();
-        })
-        this.emitter.on("filter", (orderBy) => {
-            this.orderBy = orderBy;
-            this.fetchJobs();
-        })
+        console.log("userId");
+
+        console.log(this.userId);
+          this.jobs = this.fetchJobs();
+          console.log(this.fetchJobs());
+        // this.emitter.on('search', (search) => {
+        //     this.search = search;
+        //     this.fetchJobs();
+        // })
+        // this.emitter.on("filter", (orderBy) => {
+        //     this.orderBy = orderBy;
+        //     this.fetchJobs();
+        // })
     },
     methods: {
         async fetchJobs() {
-            const { data } = await TaskService.list(this.page, this.search, this.orderBy);
-            if (data.status) {
-                this.jobs = data?.data?.data;
+            console.log(this.userId)
+            const response = await TaskService.list(this.userId,this.page, this.search, this.orderBy);
+            console.log(response)
+        if (response.status) {
+                this.jobs = response?.data?.data?.data;
+                console.log(this.jobs);
             }
         },
 

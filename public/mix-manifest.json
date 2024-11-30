@@ -11,6 +11,8 @@
     "/css/custom-rtl.css": "/css/custom-rtl.css",
     "/css/overrides.css": "/css/overrides.css",
     "/css/core.css": "/css/core.css",
+    "/css/responsive.css": "/css/responsive.css",
+    "/css/all.css": "/css/all.css",
     "/css/base/core/mixins/transitions.css": "/css/base/core/mixins/transitions.css",
     "/css/base/plugins/charts/chart-apex.css": "/css/base/plugins/charts/chart-apex.css",
     "/css/base/core/mixins/main-menu-mixin.css": "/css/base/core/mixins/main-menu-mixin.css",

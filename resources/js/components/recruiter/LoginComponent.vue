@@ -96,8 +96,9 @@ export default {
                         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
                     },
                 });
+                let user = response.data.data;
                 this.loading = false;
-                Auth.login(response.data.token, user);
+                Auth.login(user.token, user);
                 this.$toast.success(response.data.message); // Display success message
                 window.location.href = '/jobPosts/create';
             } catch (error) {

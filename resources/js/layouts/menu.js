@@ -8,7 +8,7 @@ export const userMenu = [
 ];
 
 export const driverMenu = [
-  { name: "Find Jobs", routeName: "Jobs" },
+  { name: "Find Jobs", routeName: "/jobListing" },
   { name: "My Current Job", routeName: "CurrentJob" },
   { name: "Messaging", routeName: "Inbox" },
   { name: "Job History", routeName: "JobHistory" },

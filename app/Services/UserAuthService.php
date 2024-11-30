@@ -43,4 +43,18 @@ class UserAuthService
         return $this->userAuthRepository->createLegalDocuments($data);
     }
 
+    public function logout()
+    {
+        $user = auth()->user();
+        if ($user) {
+            // if ($request->device_id) {
+            //     $this->userAuthRepository->removeFcmToken(auth()->id(), $request->device_id);
+            // }
+            $this->userAuthRepository->revokeUserToken($user);
+        } else {
+            throw new \Exception('User not authenticated.');
+        }
+    }
+
+
 }

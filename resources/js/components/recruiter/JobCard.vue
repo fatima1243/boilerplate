@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row main-content">
                 <div class="job-image col-md-3">
-                    <img :src="job?.image ? `${$storage}/${job.image.attachment}` : `${$public}/job1.png`"
+                    <img :src="job?.image ? `${$storage}/${job.image.attachment}` : `/images/home/image/job1.png`"
                         class="card-img-left image-responsive" :alt="job.title" />
                 </div>
                 <div class="col-md-9">
@@ -13,25 +13,25 @@
                             <div class="d-flex justify-content-between align-items-center mt-1">
                                 <div class="post-text">
                                     Posted {{ formateDate(job.created_at) }}
-                                    <img :src="`${$public}/share.png`" class="px-5" @click="openModal"
+                                    <img :src="`assets/share.png`" class="px-5" @click="openModal"
                                         style="cursor:pointer" />
                                 </div>
-                                <!-- <div class="bid-count btn">
-                                    <RouterLink :to="{ name: 'UserDetailJob', params: { id: job.id } }" target="_blank">
+                                <div class="bid-count btn">
+                                    <a :href="`/user-detail-job/${job.id}`" target="_blank">
                                         <p class="bid-count">No of Bids ({{ job.biddings_count }})</p>
-                                    </RouterLink>
-                                </div> -->
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="job-title">
-                        <RouterLink :to="{ name: 'UserDetailJob', params: { id: job.id } }" target="_blank">
-                            <span>{{ job.title }}</span>
-                        </RouterLink>
-                    </div> -->
+                    <div class="job-title">
+                        <a :href="`/user-detail-job/${job.id}`" target="_blank">
+                             <span>{{ job.title }}</span>
+                        </a>
+                    </div>
 
-                    <!-- <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex justify-content-between flex-wrap"> 
                         <div class="d-flex align-items-baseline flex-wrap">
                             <div class="distance">
                                 <p class="title">Distance:</p>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="location">
                                 <div class="icon">
-                                    <img :src="`${$public}/location.svg`" />
+                                    <img :src="`/images/home/image/location.svg`" />
                                 </div>
                                 <p>{{ job.pickup_location }} - {{ job.dropoff_location }}</p>
 
@@ -49,11 +49,11 @@
                         <div class="lowest-bid-tag">
                             <p>Lowest Bid: £{{ job?.min_bid?.price }}</p>
                         </div>
-                    </div> -->
+                    </div>
 
-                    <!-- <div>
+                    <div>
                         <p class="discription">{{ job.additional_details }}</p>
-                    </div> -->
+                    </div>
                     <!-- <div class="bid-actions">
                         <button @click="editJOb(job.id)" class="edit-btn"><img :src="`${$public}/basil_edit-solid.svg`" />
                         </button>

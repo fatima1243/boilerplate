@@ -3,19 +3,25 @@ import axios from "axios";
 // import constants from "./utilis/constants.js";
 class Auth {
   constructor() {
+    console.log("authorization");
     this.token = window.localStorage.getItem("token");
     let userData = window.localStorage.getItem("user");
 
+    console.log("Raw user data:", userData);
+
     if (userData === "undefined") {
-      window.localStorage.removeItem("token");
-      window.localStorage.removeItem("user");
-      window.location.href = "login";
+        window.localStorage.removeItem("token");
+        window.localStorage.removeItem("user");
+        window.location.href = "login";
     } else {
-      this.user = userData ? JSON.parse(userData) : null;
+        this.user = userData ? JSON.parse(userData) : null;
+        console.log("Parsed user object:", this.user);
     }
-  }
+}
 
   login(token, user) {
+    console.log("ligin");
+    console.log(token,user);
     window.localStorage.setItem("token", token);
     window.localStorage.setItem("user", JSON.stringify(user));
 
@@ -68,8 +74,18 @@ class Auth {
   }
 
   getUserRole() {
-    return this.user ? this.user.role : null;
-  }
+    if (!this.user) {
+        console.warn("User object is null or undefined.");
+        return null;
+    }
+    if (!this.user.role) {
+        console.warn("Role is missing in the user object.");
+        return null;
+    }
+
+    return this.user.role;
+    
+}
 
   isDriver() {
     return this.getUserRole() === constants.USER_ROLE.driver ? true : false;

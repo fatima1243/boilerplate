@@ -100,7 +100,7 @@ export default {
                 this.loading = false;
                 Auth.login(user.token, user);
                 this.$toast.success(response.data.message); // Display success message
-                window.location.href = '/jobPosts/create';
+                window.location.href = '/jobListing';
             } catch (error) {
                 console.log(error);
                 this.loading = false;
