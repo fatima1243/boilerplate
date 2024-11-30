@@ -13,7 +13,7 @@ class CreateJobPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_posts', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('service_type');
@@ -41,6 +41,6 @@ class CreateJobPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_posts');
+        Schema::dropIfExists('tasks');
     }
 }

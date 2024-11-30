@@ -4,8 +4,12 @@ namespace App\Services;
 use App\Http\Requests\BiddingRequest;
 use App\Models\JobPost;
 use App\Models\JobPostGallery;
+use App\Models\Task;
+use App\Models\TaskGallery;
 use App\Repositories\JobPostRepository;
 use Illuminate\Support\Facades\Auth;
+
+use function App\Helpers\storeFiles;
 
 class JobPostService
 {
@@ -29,14 +33,14 @@ class JobPostService
             $taskData['drop_long']  = filter_var(trim($drop_lat_long[1]), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         }
             // $taskData['user_id'] = auth()->user()->id
-        $jobPost = JobPost::create($taskData);
+        $jobPost = Task::create($taskData);
 
         if ($jobPost) {
 
             if (isset($taskData['pictures']) && is_array($taskData['pictures']) && count($taskData['pictures']) > 0) {
                 foreach ($taskData['pictures'] as $attachment) {
                     $attachmentPath = storeFiles('task_gallery/images', $attachment);
-                    JobPostGallery::create([
+                    TaskGallery::create([
                         'attachment' => $attachmentPath,
                         'task_id' => $jobPost->id,
                         'type' => 1, // 1 for images
@@ -47,7 +51,7 @@ class JobPostService
                 foreach ($taskData['videos'] as $attachment) {
                     $attachmentPath = storeFiles('task_gallery/videos', $attachment);
 
-                    JobPostGallery::create([
+                    TaskGallery::create([
                         'attachment' => $attachmentPath,
                         'task_id' => $jobPost->id,
                         'type' => 0, // 0 for videos
@@ -88,7 +92,7 @@ class JobPostService
 
     public function getAllTask($request)
     {
-        $data = JobPost::all();
+        $data = Task::all();
 
         return $data;
     }

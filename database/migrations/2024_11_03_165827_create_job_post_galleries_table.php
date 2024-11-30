@@ -13,11 +13,11 @@ class CreateJobPostGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_post_galleries', function (Blueprint $table) {
+        Schema::create('task_galleries', function (Blueprint $table) {
             $table->id();
             $table->string('attachment');
             $table->tinyInteger('type')->default(1);
-            $table->foreignId('job_post_id')->constrained()->onDelete('cascade');
+            $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ class CreateJobPostGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_post_galleries');
+        Schema::dropIfExists('task_galleries');
     }
 }

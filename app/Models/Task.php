@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobPost extends Model
+class Task extends Model
 {
     use HasFactory;
     protected $appends = ['formated_created_at', 'is_expired'];
@@ -35,17 +35,17 @@ class JobPost extends Model
 
     public function taskGalleries()
     {
-        return $this->hasMany(JobPostGallery::class, 'job_post_id', 'id')->whereType(1)->latest();
+        return $this->hasMany(TaskGallery::class, 'task_id', 'id')->whereType(1)->latest();
     }
 
     public function video()
     {
-        return $this->hasOne(JobPostGallery::class, 'job_post_id', 'id')->where('type', 0)->latest();
+        return $this->hasOne(TaskGallery::class, 'task_id', 'id')->where('type', 0)->latest();
     }
 
     public function image()
     {
-        return $this->hasOne(JobPostGallery::class, 'job_post_id', 'id')->where('type', 1)->latest();
+        return $this->hasOne(TaskGallery::class, 'task_id', 'id')->where('type', 1)->latest();
     }
 
     public function  getformatedCreatedAtAttribute()
@@ -63,5 +63,23 @@ class JobPost extends Model
         return $this->belongsTo(Recruiter::class);
     }
 
+    public function biddings()
+    {
+        return $this->hasMany(Bidding::class, 'task_id', 'id');
+    }
 
+    public function isBid()
+    {
+        return $this->hasOne(Bidding::class, 'task_id', 'id')->where('driver_id', auth()->id());
+    }
+
+    public function minBid()
+    {
+        return $this->hasOne(Bidding::class, 'task_id', 'id')->orderBy('price', 'asc');
+    }
+
+    public function myLatestBidd()
+    {
+        return $this->hasOne(Bidding::class, 'task_id', 'id')->where('user_id', auth()->id());
+    }
 }

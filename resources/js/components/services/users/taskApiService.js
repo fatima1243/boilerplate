@@ -4,8 +4,8 @@ export default {
   // listTasks: (status) => axios.get(`/get-all-task?status=${status}`),
   addTask: (data) => axios.post(`/jobPosts`, data),
   deleteTask: (id) => axios.delete(`/delete-task/${id}`),
-  list: (page, search, orderBy) =>
-    axios.get(`/jobPosts?page=${page}&search=${search}&orderBy=${orderBy}`),
+  list: (userId,page, search, orderBy) =>
+    axios.get(`/get-all-task/${userId}?page=${page}&search=${search}&orderBy=${orderBy}`),
   show: (data) => axios.get(`/get-task-by-id/${data}`),
   updateTask: (data) => axios.post(`/jobPosts`, data),
   getAllJobskList: (data) => axios.get(`/all-jobs-listing`),

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\v1\TaskController;
 use App\Http\Controllers\Auth\Driver\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LoginRegisterController;
+use App\Http\Controllers\Web\TaskController as WebTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,20 +40,27 @@ Route::group(['middleware' => 'auth'], function () {
     
 });
 Route::middleware('auth:recruiter')->group(function () {
-Route::resource('jobPosts', JobPostController::class);
+    Route::get('jobPosts/create', [JobPostController::class, 'create']);
+    Route::get('jobPosts', [JobPostController::class, 'index']);
+    });
+
+Route::controller(WebTaskController::class)->group(function(){
+    Route::get('jobListing', 'joblistingComponent');
 });
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::controller(TaskController::class)->group(function () {
+Route::get('get-task-by-id/{id}', 'getTaskById');
+});
 
 Route::get('recruiter/login', [LoginRegisterController::class, 'showLoginForm'])->name('recruiter.login');
 Route::get('driver/login', [LoginRegisterController::class, 'driverLoginForm'])->name('driver.login');
-Route::post('recruiter/post-login', [LoginRegisterController::class, 'login'])->name('recruiterLogin.post');
-Route::post('driver/post-login', [LoginRegisterController::class, 'Driverlogin'])->name('DriverLogin.post');
+
 Route::get('recruiter/register', [LoginRegisterController::class, 'register'])->name('recruiter/register');
-Route::post('recruiter/register-post', [LoginRegisterController::class, 'registration']);
+
 Route::get('/driver/registeration', [RegisterController::class, 'showRegistrationForm'])->name('driver.registerForm');
-Route::post('/driver/register', [RegisterController::class, 'register'])->name('driver.register');
+
 
 Route::get('/recruiter/verify/{token}', [LoginRegisterController::class, 'verifyRecruiterEmail'])->name('peer/verify');
 

@@ -10,7 +10,7 @@ export default {
     sendOtp: (data) => axios.post(`/send-otp`, data),
     resetPassword: (data) => axios.post(`/reset-password`, data),
     socialLogin: (data) => axios.post(`/auth/social-login`, data),
-    getStates: () => axios.get(`/api/get-states`),
-    getCities: (data) => axios.post(`/api/get-cities-based-on-state`, data),
+    getStates: () => axios.get(`/get-states`),
+    getCities: (data) => axios.post(`/get-cities-based-on-state`, data),
     verifyOTPAndResetPassword: (data) => axios.post(`/verify-otp-reset`, data),
 };

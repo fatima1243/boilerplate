@@ -17,6 +17,7 @@ class Recruiter extends Authenticatable
     use HasFactory, SoftDeletes, Notifiable, HasApiTokens;
 
     protected $guard_name = 'recruiter';
+    protected $appends = ['role'];
 
     protected $fillable = [
         'first_name',
@@ -36,9 +37,13 @@ class Recruiter extends Authenticatable
     {
         return $this->hasOne(VerifyRecruiter::class);
     }
-    public function jobPosts()
+    public function tasks()
     {
-        return $this->hasMany(JobPost::class);
+        return $this->hasMany(Task::class);
+    }
+    public function getRoleAttribute()
+    {
+        return 0; // Role for driver
     }
 }
 

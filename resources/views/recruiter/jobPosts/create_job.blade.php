@@ -7,7 +7,8 @@
     <div class="">
         @include('user.layouts.response')
     </div>
-    <dashboard-component :role="{{ json_encode($roleId) }}" :dynamic-component="'job-component'"></dashboard-component>
+    <dashboard-component></dashboard-component>
+    <job-component></job-component>
 @endsection
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

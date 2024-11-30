@@ -91,5 +91,9 @@ class UserAuthRepository
     {
         return LegalDocument::create($data);
     }
+    public function revokeUserToken($user)
+    {
+        $user->token()->revoke();
+    }
 
 }

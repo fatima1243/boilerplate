@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Driver extends Authenticatable
 {
     use HasFactory, SoftDeletes, Notifiable, HasApiTokens;
+    protected $appends = ['role'];
     protected $guard_name = 'driver';
 
     protected $fillable = [
@@ -38,4 +39,9 @@ class Driver extends Authenticatable
     {
         return $this->hasMany(Vehicle::class);
     }
+    public function getRoleAttribute()
+    {
+        return 1; // Role for driver
+    }
+
 }
